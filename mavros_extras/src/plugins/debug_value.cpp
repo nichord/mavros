@@ -153,7 +153,7 @@ private:
     dv_msg.header.stamp = uas->synchronise_stamp(debug.time_boot_ms);
     dv_msg.type = DV::TYPE_DEBUG;
     dv_msg.index = debug.ind;
-    dv_msg.array_id = -1;
+    //dv_msg.array_id = -1;
     dv_msg.value_float = debug.value;
     // [[[end]]] (checksum: ef695729241176edd2e06592ed20549b)
 
@@ -185,7 +185,7 @@ private:
     dv_msg.header.stamp = uas->synchronise_stamp(debug.time_usec);
     dv_msg.type = DV::TYPE_DEBUG_VECT;
     dv_msg.index = -1;
-    dv_msg.array_id = -1;
+    //dv_msg.array_id = -1;
     dv_msg.name = mavlink::to_string(debug.name);
     dv_msg.data.resize(3);
     dv_msg.data[0] = debug.x;
@@ -216,10 +216,11 @@ private:
     // ]]]
     DV dv_msg;
     dv_msg.header.stamp = uas->synchronise_stamp(debug.time_usec);
-    dv_msg.type = DV::TYPE_DEBUG_FLOAT_ARRAY;
+    dv_msg.type = DV::TYPE_DEBUG_ARRAY;
+    dv_msg.type = DV::TYPE_DEBUG_VECT;
     dv_msg.index = -1;
     dv_msg.name = mavlink::to_string(debug.name);
-    dv_msg.array_id = debug.array_id;
+    //dv_msg.array_id = debug.array_id;
     dv_msg.data.assign(debug.data.begin(), debug.data.end());
     // [[[end]]] (checksum: e13bbba22bff5b74db32092d8787c6b4)
 
@@ -247,7 +248,7 @@ private:
     dv_msg.header.stamp = uas->synchronise_stamp(value.time_boot_ms);
     dv_msg.type = DV::TYPE_NAMED_VALUE_FLOAT;
     dv_msg.index = -1;
-    dv_msg.array_id = -1;
+    //dv_msg.array_id = -1;
     dv_msg.name = mavlink::to_string(value.name);
     dv_msg.value_float = value.value;
     // [[[end]]] (checksum: 8c243c3e607db7bf0758cd4ac3aca976)
@@ -275,7 +276,7 @@ private:
     dv_msg.header.stamp = uas->synchronise_stamp(value.time_boot_ms);
     dv_msg.type = DV::TYPE_NAMED_VALUE_INT;
     dv_msg.index = -1;
-    dv_msg.array_id = -1;
+    //dv_msg.array_id = -1;
     dv_msg.name = mavlink::to_string(value.name);
     dv_msg.value_int = value.value;
     // [[[end]]] (checksum: 32cb48d5dad85c622997aeb6d34c255e)
@@ -320,7 +321,8 @@ private:
           uas->send_message(debug);
           break;
         }
-      case DV::TYPE_DEBUG_FLOAT_ARRAY: {
+//      case DV::TYPE_DEBUG_FLOAT_ARRAY: {
+      case DV::TYPE_DEBUG_ARRAY: {
           mavlink::common::msg::DEBUG_FLOAT_ARRAY debug {};
 
           debug.time_usec = get_time_usec(req->header.stamp);

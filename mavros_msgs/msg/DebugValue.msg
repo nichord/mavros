@@ -19,8 +19,8 @@ int32 value_int		# int value for NAMED_VALUE_INT
 float32[] data			# DEBUG vector or array
 
 uint8 type
-uint8 TYPE_DEBUG		= 0
-uint8 TYPE_DEBUG_VECT		= 1
-uint8 TYPE_DEBUG_FLOAT_ARRAY	= 2
-uint8 TYPE_NAMED_VALUE_FLOAT	= 3
-uint8 TYPE_NAMED_VALUE_INT	= 4
+uint8 TYPE_DEBUG = 0
+uint8 TYPE_DEBUG_VECT = 1
+uint8 TYPE_DEBUG_FLOAT_ARRAY = 2
+uint8 TYPE_NAMED_VALUE_FLOAT = 3
+uint8 TYPE_NAMED_VALUE_INT = 4
